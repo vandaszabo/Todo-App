@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-const CreateForm = ({ onSubmit }) => {
+const CreateForm = ({ onSubmit, onCancel }) => {
 
     const [title, setTitle] = useState('');
     const [comment, setComment] = useState('');
@@ -67,6 +67,7 @@ const CreateForm = ({ onSubmit }) => {
                     </li>
                     <li className="list-group-item">
                         <button type="submit" className="btn btn-outline-success">Submit</button>
+                        <button type="button" className="btn btn-outline-warning" onClick={onCancel}>Cancel</button>
                     </li>
                 </ul>
             </form>

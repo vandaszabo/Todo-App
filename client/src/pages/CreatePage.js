@@ -4,6 +4,7 @@ import CreateForm from '../components/CreateForm.js';
 function CreatePage() {
 
     const [submitted, setSubmitted] = useState(false);
+    const [cancelled, setCancelled] = useState(false);
     const [error, setError] = useState(false);
 
     const handleFormSubmit = async (data) => {
@@ -27,25 +28,30 @@ function CreatePage() {
         }
     };
 
+    const handleCancel = async () => {
+        setCancelled(true);
+    };
+
     return (
-        <>
-            {submitted ? (
+        <>{!cancelled && (
+            submitted ? (
                 error ? (
                     <div className="position-absolute top-0 start-50 translate-middle-x">
                         <p className="alert alert-danger" role="alert">Title cannot be empty!</p>
-                        <CreateForm onSubmit={handleFormSubmit} />
+                        <CreateForm onSubmit={handleFormSubmit} onCancel={handleCancel} />
                     </div>
 
                 ) : (
                     <div className="position-absolute top-0 start-50 translate-middle-x">
                         <p className="alert alert-success" role="alert">New todo has added</p>
-                        <CreateForm onSubmit={handleFormSubmit} />
+                        <CreateForm onSubmit={handleFormSubmit} onCancel={handleCancel} />
                     </div>
                 )
             ) : (
                 <div className="position-absolute top-0 start-50 translate-middle-x">
-                    <CreateForm onSubmit={handleFormSubmit} />
+                    <CreateForm onSubmit={handleFormSubmit} onCancel={handleCancel}/>
                 </div>
+            )
             )}
         </>
     );
