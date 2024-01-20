@@ -9,6 +9,7 @@ function TodoTable() {
     const [newTitle, setNewTitle] = useState('');
     const [newComment, setNewComment] = useState('');
     const [newCategory, setNewCategory] = useState('');
+    const [newColor, setNewColor] = useState('');
     const [editOver, setEditOver] = useState(false);
 
     const deleteFunction = async (id) => {
@@ -46,12 +47,15 @@ function TodoTable() {
         if (newCategory !== '') {
             dataEdit.category = newCategory;
         }
+        if (newColor !== '') {
+            dataEdit.color = newColor;
+        }
 
         try {
             await fetch('http://localhost:4000/api/todo/edit', {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: id, title: dataEdit.title, comment: dataEdit.comment, category: dataEdit.category })
+                body: JSON.stringify({ id: id, title: dataEdit.title, comment: dataEdit.comment, category: dataEdit.category, color: dataEdit.color })
             });
             const updatedList = data.map(todo => {
                 if (todo._id === id) {
@@ -59,7 +63,8 @@ function TodoTable() {
                         ...todo,
                         title: newTitle,
                         comment: newComment,
-                        category: newCategory
+                        category: newCategory,
+                        color: newColor
                     };
                 }
                 else return todo;
@@ -68,6 +73,7 @@ function TodoTable() {
             setNewComment('');
             setNewTitle('');
             setNewCategory('');
+            setNewColor('');
 
         } catch (err) {
             console.log(err);
@@ -99,13 +105,14 @@ function TodoTable() {
 
     return (
         <div>
-           <table className="table">
+            <table className="table table-hover">
                 <thead className="table-dark">
                     <tr>
                         <th>Title</th>
                         <th>Comment</th>
                         <th>Date</th>
                         <th>Category</th>
+                        <th>Color</th>
                         <th>Edit</th>
                         <th>Remove</th>
                     </tr>
@@ -138,6 +145,9 @@ function TodoTable() {
                                         <option value="Non-Urgent">Non-Urgent</option>
                                     </select>
                                 </td>
+                                <td>
+                                    <input type="color" className="form-control form-control-color" id="colorInput" value={todo.color? todo.color : "#563d7c"} onChange={(e) => setNewColor(e.target.value)} title="Use dark vivid color" />
+                                </td>
 
                                 <td className='submit'>
                                     <button className='todoButton' onClick={() => submitFunction(todo._id)}>submit</button>
@@ -149,13 +159,14 @@ function TodoTable() {
 
                             </tr>
                         ) : (
-                            <tr key={todo._id}>
+                            <tr key={todo._id} style={{ backgroundColor: todo.color }}>
                                 <td className='title'>{todo.title}</td>
 
                                 <td className='comment'>{todo.comment}</td>
 
                                 <td className='createdAt'>{todo.createdAt ? todo.createdAt.slice(0, 10) : null}</td>
                                 <td className='category'>{todo.category}</td>
+                                <td className='color' style={{ backgroundColor: todo.color ? todo.color : null }}></td>
                                 <td className='edit'>
                                     <button className='todoButton' onClick={() => editFunction(todo._id)}>
                                         <img src={penIcon} width='auto' height='15px' alt='pen'></img>

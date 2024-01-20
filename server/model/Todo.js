@@ -5,7 +5,8 @@ const todoSchema = new Schema({
     title: String,
     comment: String,
     createdAt: Date,
-    category: String
+    category: String,
+    color: String
 });
 
 const Todo = model('Todo', todoSchema);

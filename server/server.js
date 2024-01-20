@@ -39,11 +39,13 @@ mongoose.connect(mongoDB).then(() => {
         const comment = req.body.comment;
         const createdAt = req.body.createdAt;
         const category = req.body.category;
+        const color = req.body.color;
         const todo = new Todo({
             title,
             comment,
             createdAt,
-            category
+            category,
+            color
         });
         todo.save()
             .then((savedTodo) => res.json(savedTodo))
@@ -69,7 +71,8 @@ mongoose.connect(mongoDB).then(() => {
             .then(todo => {
                 todo.title = req.body.title
                 todo.comment = req.body.comment
-                todo.category = req.body.category
+                todo.category = req.body.category,
+                todo.color = req.body.color
                 return todo.save();
             })
             .catch(err => {
