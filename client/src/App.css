@@ -49,18 +49,14 @@ body .App-content{
   margin-top: 20%;
 }
 
-.navButton{
+nav button{
   border: none;
   background-color: transparent;
 }
 
-.nav{
+nav{
+  display: flex;
   justify-content: center;
-}
-
-.nav li{
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .background-img{
