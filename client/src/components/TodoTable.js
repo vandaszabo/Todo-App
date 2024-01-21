@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import penIcon from '../icons/pen.png';
 import deleteIcon from '../icons/bin.png';
-import detailsIcon from '../icons/viewDetails.png';
 import '../App.css';
 
 function TodoTable({setShowTodos, showTodos}) {
@@ -100,7 +99,7 @@ function TodoTable({setShowTodos, showTodos}) {
             }
         }
         listFetcher();
-    }, []);
+    }, [showTodos]);
 
     const handleCancel = async () => {
         setShowTodos(false);
@@ -113,7 +112,7 @@ function TodoTable({setShowTodos, showTodos}) {
     return (
         <div>
             {showTodos && (
-                <table className="table table-hover">
+                <table className="table">
                     <thead className="table-dark">
                         <tr>
                             <th>Title</th>
@@ -190,8 +189,16 @@ function TodoTable({setShowTodos, showTodos}) {
                                 </tr>
                             )
                         ))}
+                    <tr className="table-dark">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td className="d-flex justify-content-center"><button type="button" className="btn btn-danger" onClick={handleCancel}>Close</button></td>
+                    </tr>
                     </tbody>
-                    <button type="button" className="btn btn-outline-warning" onClick={handleCancel}>Close</button>
                 </table>)}
         </div>
 

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CreateForm from '../components/CreateForm.js';
-import addIcon from '../icons/addIcon.png';
 import '../App.css';
 
 function CreatePage({setShowCreate, showCreate}) {
@@ -31,7 +30,9 @@ function CreatePage({setShowCreate, showCreate}) {
 
     const handleCancel = async () => {
       setShowCreate(false);
+      setSubmitted(false);
     };
+
     return (
         <div>
             {showCreate && (

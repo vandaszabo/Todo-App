@@ -67,8 +67,10 @@ const CreateForm = ({ onSubmit, onCancel }) => {
                         <input type="color" className="form-control form-control-color" id="colorInput" value={color} onChange={(e) => setColor(e.target.value)} title="Use dark vivid color" />
                     </li>
                     <li className="list-group-item">
-                        <button type="submit" className="btn btn-outline-success">Submit</button>
-                        <button type="button" className="btn btn-outline-warning" onClick={onCancel}>Cancel</button>
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button type="submit" className="btn btn-outline-success me-md-2">Submit</button>
+                            <button type="button" className="btn btn-outline-danger" onClick={onCancel}>Cancel</button>
+                        </div>
                     </li>
                 </ul>
             </form>
