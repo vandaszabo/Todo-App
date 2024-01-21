@@ -62,3 +62,15 @@ body .App-content{
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.background-img{
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  
+  background: url('./icons/desk.jpg')
+  no-repeat     center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+   background-size: cover;
+}

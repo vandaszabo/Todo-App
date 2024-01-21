@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import penIcon from '../icons/pen.png';
 import deleteIcon from '../icons/bin.png';
+import detailsIcon from '../icons/details.png';
 
 function TodoTable() {
     const [data, setData] = useState([]);
@@ -11,6 +12,8 @@ function TodoTable() {
     const [newCategory, setNewCategory] = useState('');
     const [newColor, setNewColor] = useState('');
     const [editOver, setEditOver] = useState(false);
+    const [showTableButton, setShowTableButton] = useState(false);
+    const [cancelled, setCancelled] = useState(false);
 
     const deleteFunction = async (id) => {
         console.log("Delete object:", id)
@@ -99,12 +102,19 @@ function TodoTable() {
         listFetcher();
     }, []);
 
+    const handleCancel = async () => {
+        setCancelled(true);
+        setShowTableButton(true);
+    };
+
     if (!fetchOver) {
         return <div>Loading...</div>;
     }
 
     return (
         <div>
+            {showTableButton && <button type="button" className='navButton' onClick={() => {setShowTableButton(false); setCancelled(false); }}><img src={detailsIcon} height='50px' width='auto' alt='view' title='View & Edit' /></button>}
+            {!cancelled && (
             <table className="table table-hover">
                 <thead className="table-dark">
                     <tr>
@@ -183,7 +193,8 @@ function TodoTable() {
                         )
                     ))}
                 </tbody>
-            </table>
+                <button type="button" className="btn btn-outline-warning" onClick={handleCancel}>Close</button>
+            </table>)}
         </div>
 
     );

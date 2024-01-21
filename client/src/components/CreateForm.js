@@ -28,9 +28,10 @@ const CreateForm = ({ onSubmit, onCancel }) => {
 
     return (
         <div style={{marginTop: '30%'}}>
+            
             <form className="input-group mb-3" onSubmit={handleSubmit}>
                 <ul className="list-group list-group-flush">
-
+                <li className="list-group-item">Create a new Todo</li>
                     <li className="list-group-item">
                         <label className="form-label">
                             Title:

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import CreateForm from '../components/CreateForm.js';
+import addIcon from '../icons/addIcon.png';
 
 function CreatePage() {
 
     const [submitted, setSubmitted] = useState(false);
     const [cancelled, setCancelled] = useState(false);
     const [error, setError] = useState(false);
+    const [showCreateButton, setShowCreateButton] = useState(false)
 
     const handleFormSubmit = async (data) => {
         try {
@@ -30,10 +32,13 @@ function CreatePage() {
 
     const handleCancel = async () => {
         setCancelled(true);
+        setShowCreateButton(true);
     };
 
     return (
-        <>{!cancelled && (
+        <>
+        {showCreateButton && <button type="button" className='navButton' onClick={() => {setCancelled(false); setShowCreateButton(false);}}><img src={addIcon} height='50px' width='auto' alt='add' title='Create New Todo' /></button>}
+        {!cancelled && (
             submitted ? (
                 error ? (
                     <div className="position-absolute top-0 start-50 translate-middle-x">
