@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import './bootstrap-cyborg.css';
+import './bootstrap-journal.css';
 import TodoTable from './components/TodoTable.js';
 import CreatePage from './pages/CreatePage.js';
 import Navbar from './pages/Navbar.js';

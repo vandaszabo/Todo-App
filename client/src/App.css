@@ -34,16 +34,6 @@
     transform: rotate(360deg);
   }
 }
-body .App-content{
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0; 
-  background-image: url('https://www.behance.net/gallery/183770673/Cafe-Bustelo-v1?tracking_source=search_projects&l=5');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 
 .card{
   margin-top: 20%;
@@ -63,7 +53,7 @@ nav{
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   
-  background: url('./icons/desk.jpg')
+  background: url('./icons/bed.jpg')
   no-repeat     center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;

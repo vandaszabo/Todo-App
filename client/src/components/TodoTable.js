@@ -113,7 +113,7 @@ function TodoTable({setShowTodos, showTodos}) {
         <div>
             {showTodos && (
                 <table className="table">
-                    <thead className="table-dark">
+                    <thead className="table-active">
                         <tr>
                             <th>Title</th>
                             <th>Comment</th>
@@ -189,7 +189,7 @@ function TodoTable({setShowTodos, showTodos}) {
                                 </tr>
                             )
                         ))}
-                    <tr className="table-dark">
+                    <tr className="table-active">
                         <td></td>
                         <td></td>
                         <td></td>
